@@ -6,7 +6,7 @@ bigNumbers bigNumbers(&lcd);
 
 void setup() {
   lcd.begin(16, 2);
-  intNumbers();
+  bigNumbers.intNumbers();
 }
 
 void loop()
