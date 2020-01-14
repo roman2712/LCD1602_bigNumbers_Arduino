@@ -1,11 +1,13 @@
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 #include <bigNumbers.h>
-bigNumbers <LiquidCrystal> bigNumbersLcd(&lcd);
+bigNumbers <LiquidCrystal_I2C> bigNumbersLcd(&lcd);
 
 void setup() {
-  lcd.begin(16,2);
+  lcd.init();
+  lcd.setBacklight(255);
   bigNumbersLcd.intNumbers();
 }
 

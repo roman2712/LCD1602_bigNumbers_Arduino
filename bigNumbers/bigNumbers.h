@@ -2,7 +2,6 @@
 #define BIGNUMBERS_H
 
 #include <avr/pgmspace.h>
-#include <LiquidCrystal.h>
 
 const PROGMEM  uint8_t number[] = {
   0xFF, 0x00, 0xFF, 0xFF, 0x01, 0xFF, //0
@@ -18,14 +17,17 @@ const PROGMEM  uint8_t number[] = {
   0x20, 0x20, 0x20, 0x20, 0x20, 0x20 //' '
 };
 
+template <class L>
 class bigNumbers
 {
   private:
-    LiquidCrystal *lcd;
+    L *lcd;
   public:
-    bigNumbers(LiquidCrystal *_lcd);
+    bigNumbers(L *_lcd);
     void printNumber(uint8_t n, uint8_t posx, uint8_t posy = 0);
     void intNumbers();
 };
+
+#include "bigNumbers.cpp"
 
 #endif

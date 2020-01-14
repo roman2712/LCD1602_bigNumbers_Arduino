@@ -1,11 +1,16 @@
+#ifndef BIGNUMBERS_CPP
+#define BIGNUMBERS_CPP
+
 #include "bigNumbers.h"
 
-bigNumbers::bigNumbers(LiquidCrystal *_lcd)
+template <class L>
+bigNumbers<L>::bigNumbers(L *_lcd)
 {
   lcd = _lcd;
 }
 
-void bigNumbers::printNumber(uint8_t n, uint8_t posx, uint8_t posy)
+template <class L>
+void bigNumbers<L>::printNumber(uint8_t n, uint8_t posx, uint8_t posy)
 {
   lcd->setCursor(posx, posy);
   for (size_t i = 0; i < 3; ++i) lcd->write(pgm_read_byte_near(number + n * 6 + i));
@@ -13,7 +18,8 @@ void bigNumbers::printNumber(uint8_t n, uint8_t posx, uint8_t posy)
   for (size_t i = 0; i < 3; ++i) lcd->write(pgm_read_byte_near(number + n * 6 + i + 3));
 }
 
-void bigNumbers::intNumbers()
+template <class L>
+void bigNumbers<L>::intNumbers()
 {
   uint8_t temp[8];
   for (size_t i = 2; i < 8; ++i) temp[i] = 0;
@@ -29,3 +35,4 @@ void bigNumbers::intNumbers()
 }
 
 
+#endif
